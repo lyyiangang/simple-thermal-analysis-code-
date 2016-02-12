@@ -5,7 +5,7 @@ CFD::RectangleRegion
 	RectangleRegion defines a rectangle region. you can use it to represent a rectangle region. e.g. 
 	if you want define rectangle with width=0.2 and height=0.2 at the point(0.1,0.2), then, you can use the code like this:
 	CFD::RectangleRegion ariRegion(0.1,0.1,0.2,0.2,20.0,1.9e-5). Note that, number 20.0 represents the temperature of air,and
-	number 1.9e-5 means alpha value for air whick is a const value, for more information about it, please refer to 
+	number 1.9e-5 means alpha value for air which is a const value, for more information about it, please refer to 
 	https://en.wikipedia.org/wiki/Thermal_diffusivity.
 CFD::Mesher
 	Mesher can generate rectangle grid for finite differenct method. Taking a chip in the air for example, in order to solve the 
