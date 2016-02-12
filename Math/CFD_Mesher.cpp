@@ -5,14 +5,6 @@
 #include <fstream>
 namespace CFD
 {
-	namespace
-	{
-		//如果两个值相差TOL(1e-8),那么可以认为这两个点相同
-		bool IsEqual(double val1, double val2)
-		{
-			return std::abs(val1 - val2) < TOL;
-		}
-	}
 	Mesher::Mesher(const RectangleRegion & problemRegion, const std::vector<RectangleRegion>& partRegions) :
 		_problemRegion(problemRegion),
 		_partRegions(partRegions),
@@ -31,7 +23,6 @@ namespace CFD
 
 	void Mesher::StartMesh()
 	{
-		//确保问题域包含了所有的零件域
 		for (int ii = 0; ii < _partRegions.size(); ++ii)
 		{
 			assert(_problemRegion.Contain(_partRegions[ii]));
@@ -87,7 +78,7 @@ namespace CFD
 
 	void Mesher::SaveToFile(const std::string & fileName) 
 	{
-		//导出文件后可以用matlab画出网格
+		//exporting to a file
 		std::ofstream fileStream;
 		fileStream.open(fileName);
 		fileStream << "#num of problem regions and part regions" << std::endl;
@@ -126,7 +117,6 @@ namespace CFD
 		float meshSize = _problemRegionMeshSize;
 		if (interval.IsPartRegion)
 		{
-			//如果是零件的话划分的应该更密一些
 			meshSize = _partRegionMeshSize;
 		}
 		const int nSegments = (int)(interval.Length() / meshSize);

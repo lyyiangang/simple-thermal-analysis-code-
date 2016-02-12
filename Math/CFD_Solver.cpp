@@ -43,30 +43,6 @@ namespace CFD
 	int Solver::StartSolve()
 	{
 		assert(_nx > 2 && _ny > 2);
-		//float minDy = 1e10, minDx = 1e10;
-		//for (int jj = 1; jj < _ny; ++jj)
-		//{
-		//	float tmpVal = _tMatrix[jj][0].Y - _tMatrix[jj - 1][0].Y;
-		//	if (tmpVal < minDy)
-		//		minDy = tmpVal;
-		//}
-		//for (int ii = 1; ii < _nx; ++ii)
-		//{
-		//	float tmpVal = _tMatrix[0][ii].X - _tMatrix[0][ii - 1].X;
-		//	if (tmpVal < minDx)
-		//		minDx = tmpVal;
-		//}
-
-		//set intial temperature
-		//for (int jj = 0; jj< _ny;++jj)
-		//{
-		//	for (int ii = 0; ii < _nx;++ii)
-		//	{
-		//		if (_tMatrix[jj][ii].BoundaryCondition < 1)
-		//			_tMatrix[jj][ii].T = _config.InitialTemperature;
-		//	}
-		//}
-		
 		auto getMaxError = [](const TemperatureMatrix& mat1, const TemperatureMatrix& mat2)->float
 		{
 			assert(mat1.size()>0 && mat1.front().size() > 0);
