@@ -4,10 +4,6 @@
 #include "stdafx.h"
 #include "CFD_Mesher.h"
 #include "CFD_Solver.h"
-void RemoveOldDataFiles(const std::string& fileName)
-{
-	
-}
 void Test()
 {
 	//remove the old files
@@ -17,7 +13,7 @@ void Test()
 	//define the problem region(air)
 	float intialTemperature = 10.0;
 	std::vector<CFD::RectangleRegion> allPartRegions;
-	CFD::RectangleRegion problemRegion(0.0, 0.0, 1.0, 1.0, intialTemperature,1.9e-5);//air
+	CFD::RectangleRegion problemRegion(0.0, 0.0, 1.0, 1.0, intialTemperature,1.9e-5);//air 
 
 	//define the very part,e.g. a copper block with height equals 0.2 and width equals 0.2
 	CFD::RectangleRegion partRegion1(0.2, 0.2, 0.2, 0.2,40.0, 1.11e-4);//copper( 0.000111)
@@ -39,7 +35,7 @@ void Test()
 	//air:1.9e-5
 	CFD::SolverConfig config;
 	config.Dt = 0.1;//时间步长，数值越小，需要迭代的次数越多，计算越慢
-	config.TotalTime = 100;//数值越大，迭代次数越多，计算越慢
+	config.TotalTime = 10000;//数值越大，迭代次数越多，计算越慢
 	config.Epsilon = 1e-4;//求解精度，如果本次迭代与上次迭代的数值之差小于该值，则计算可以结束
 	CFD::Solver solver(mesher.XMeshPos(), mesher.YMeshPos());
 	solver.SetConfiguration(config);
